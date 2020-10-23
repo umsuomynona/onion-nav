@@ -1,7 +1,13 @@
 #include <init.h>
 
 int nav_init(){
-  gtk_init(NULL,NULL);
+
+  WebKitSettings *settings  = settings_nav_load_settings(SETTINGS_PATH);
+  if(!settings){
+    nav_log("Não foi possível carregar configurações\n");
+    return 1;
+  }
+
   webview = webkit_web_view_new();
   url_entry = gtk_search_entry_new();
   GtkWidget *opcoes_box = gtk_box_new(0,0);
@@ -15,7 +21,7 @@ int nav_init(){
   GtkWidget *wnd = gtk_window_new(GTK_WINDOW_TOPLEVEL);
 
   WebKitWebContext *context = webkit_web_context_get_default();
-  WebKitNetworkProxySettings *proxy = webkit_network_proxy_settings_new("socks5://127.0.0.1:9050",NULL);
+  WebKitNetworkProxySettings *proxy = webkit_network_proxy_settings_new(TOR_PROXY_URI,NULL);
   webkit_web_context_set_network_proxy_settings(context,WEBKIT_NETWORK_PROXY_MODE_CUSTOM,proxy);
   WebKitDownload *download = webkit_web_view_download_uri(WEBKIT_WEB_VIEW(webview),HOME);
 
@@ -51,6 +57,5 @@ int nav_init(){
 
   g_signal_connect(home_button,"clicked",G_CALLBACK(home_redirect),NULL);
   g_signal_connect(url_entry,"activate",G_CALLBACK(nova_url),NULL);
-
-  gtk_main();
+  return 0;
 }

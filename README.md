@@ -5,13 +5,14 @@ Um navegador para rede onion
 
 ### Dependencias
 
-	libwebkit2 (gtk-4.0)
+	webkit2gtk-4.0
+	json-glib-1.0
 
 Ainda não tem instalacao, então apenas compile com
 
 	make
 
-	
+
 e execute com ./onion-nav
 
 
