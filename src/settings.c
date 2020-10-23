@@ -13,7 +13,7 @@ int settings_desative_javascript(){
     if(error){
       nav_log(error->message);
     }else{
-      nav_log("Erro ao fazer parser WebKitSettings\n");
+      nav_log(PARSER_ERRO);
     }
     return NULL;
   }

@@ -6,7 +6,7 @@ void nav_log(char *path){
   GDateTime *agora = g_date_time_new_now (tz);
 
   if(!g_dir_open(LOG_DIR_PATH,0,&error)){
-    g_printerr("Não foi possível abrir diretorio de logs\n");
+    g_printerr(CANT_OPEN_DIR);
     g_printerr("%s\n",strerror(errno));
     return ;
   }
@@ -15,7 +15,7 @@ void nav_log(char *path){
   sprintf(real_path,"%s%s",LOG_DIR_PATH,LOG_FILENAME);
   FILE *log_file = fopen(real_path,"a+");
   if(!log_file){
-    g_printerr("Não foi possível criar arquivo de logs\n");
+    g_printerr(CANT_CREATE_FILE);
     g_printerr("%s\n",strerror(errno));
     return ;
   }

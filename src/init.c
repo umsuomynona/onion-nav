@@ -1,10 +1,11 @@
 #include <init.h>
+#include <messages.h>
 
 int nav_init(){
 
   WebKitSettings *settings  = settings_nav_load_settings(SETTINGS_PATH);
   if(!settings){
-    nav_log("Não foi possível carregar configurações\n");
+    nav_log(CANT_LOAD_SETTINGS);
     return 1;
   }
 

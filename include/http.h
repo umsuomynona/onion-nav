@@ -1,4 +1,5 @@
 #include <webkitgtk-4.0/webkit2/webkit2.h>
+#include <messages.h>
 
 extern GtkWidget *webview;
 

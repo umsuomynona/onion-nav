@@ -5,6 +5,7 @@ INCLUDE=-I include/
 CC_FLAGS=`pkg-config --libs --cflags webkit2gtk-4.0 json-glib-1.0` -g $(INCLUDE)
 OBJS=init.o http.o home.o settings.o log.o
 DATA_FILES_DIR=/usr/share/$(RESULT)
+CONFIG_FILE=$(DATA_FILES_DIR)/settings.json
 BIN_DIR=/bin/$(RESULT)
 
 all: objects.o
@@ -34,5 +35,10 @@ install: all
 	mkdir -p $(DATA_FILES_DIR)
 	find $(DATA_FILES_DIR) -type d -exec chmod 777 {} \;
 	find $(DATA_FILES_DIR) -type f -exec chmod 755 {} \;
+	#echo "{}" > $(CONFIG_FILE) #config file
 	mkdir -p $(DATA_FILES_DIR)/logs
 	cp $(RESULT) $(BIN_DIR)
+
+desinstall:
+	rm -rf $(DATA_FILES_DIR)
+	rm $(BIN_DIR)

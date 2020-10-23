@@ -1,5 +1,7 @@
 #include <webkitgtk-4.0/webkit2/webkit2.h>
 #include <json-glib-1.0/json-glib/json-glib.h>
+#include <messages.h>
+
 
 #define SETTINGS_PATH "/usr/share/onion-nav/settings.json"
 extern GtkWidget *webview;

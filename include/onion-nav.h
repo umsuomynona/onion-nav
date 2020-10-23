@@ -1,4 +1,5 @@
 #include <webkitgtk-4.0/webkit2/webkit2.h>
+#include <messages.h>
 
 #define HOME "http://quosl6t6c64mnn7d.onion/"
 
